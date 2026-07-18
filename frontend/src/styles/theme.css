@@ -1,0 +1,68 @@
+/**
+ * Enterprise Editor Module color palette.
+ * Exposed as CSS variables so the host application can override them
+ * (e.g. for dark mode) without touching component code.
+ */
+:root {
+  --editor-primary: #16A34A;
+  --editor-primary-hover: #15803D;
+  --editor-primary-light: #DCFCE7;
+  --editor-primary-dark: #14532D;
+  --editor-accent: #22C55E;
+
+  --editor-bg: #F8FAFC;
+  --editor-surface: #FFFFFF;
+  --editor-border: #E5E7EB;
+
+  --editor-text-primary: #111827;
+  --editor-text-secondary: #6B7280;
+
+  --editor-success: #16A34A;
+  --editor-warning: #F59E0B;
+  --editor-danger: #DC2626;
+  --editor-info: #2563EB;
+}
+
+[data-editor-theme='dark'] {
+  --editor-bg: #0F172A;
+  --editor-surface: #1E293B;
+  --editor-border: #334155;
+  --editor-text-primary: #F1F5F9;
+  --editor-text-secondary: #94A3B8;
+}
+
+.editor-shell { background: var(--editor-bg); color: var(--editor-text-primary); }
+.editor-card { background: var(--editor-surface); border: 1px solid var(--editor-border); border-radius: 0.75rem; }
+
+.btn-editor-primary { background-color: var(--editor-primary); border-color: var(--editor-primary); color: #fff; }
+.btn-editor-primary:hover { background-color: var(--editor-primary-hover); border-color: var(--editor-primary-hover); color: #fff; }
+
+.badge-status-draft { background: var(--editor-border); color: var(--editor-text-primary); }
+.badge-status-review { background: var(--editor-info); color: #fff; }
+.badge-status-approved { background: var(--editor-primary-light); color: var(--editor-primary-dark); }
+.badge-status-scheduled { background: var(--editor-warning); color: #fff; }
+.badge-status-published { background: var(--editor-primary); color: #fff; }
+.badge-status-archived { background: var(--editor-text-secondary); color: #fff; }
+.badge-status-rejected { background: var(--editor-danger); color: #fff; }
+
+.ProseMirror { min-height: 400px; outline: none; padding: 1.25rem; }
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--editor-text-secondary);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.ProseMirror table { border-collapse: collapse; width: 100%; }
+.ProseMirror table td, .ProseMirror table th {
+  border: 1px solid var(--editor-border);
+  padding: 0.4rem 0.6rem;
+  position: relative;
+}
+.ProseMirror table th { background: var(--editor-primary-light); font-weight: 600; }
+.ProseMirror ul[data-type='taskList'] { list-style: none; padding-left: 0.5rem; }
+.ProseMirror pre { background: #0d1117; color: #e6edf3; padding: 0.9rem; border-radius: 0.5rem; overflow-x: auto; }
+.ProseMirror code { background: var(--editor-primary-light); color: var(--editor-primary-dark); border-radius: 0.25rem; padding: 0.1rem 0.3rem; }
+.ProseMirror pre code { background: none; color: inherit; padding: 0; }
+.ProseMirror mark { background: #FEF08A; }
+.ProseMirror blockquote { border-left: 3px solid var(--editor-primary); padding-left: 1rem; color: var(--editor-text-secondary); }
